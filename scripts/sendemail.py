@@ -10,9 +10,13 @@ def index(req, recieptNo):
     recieptNo = cgi.escape(recieptNo)
     x = doSql() 
     rets = x.execqry("select getReceiptNo('" + recieptNo + "');",False)
-    result = []
+  
     for ret in rets:
         stringed = map(str, ret)
-        result.append(stringed)
+    if stringed != "None":
+        result = {“resp”: “OK” }
+    else:
+        result = {“resp”: “KO” }
+ 
 		
     return json.dumps(result)
