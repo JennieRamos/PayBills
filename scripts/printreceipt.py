@@ -7,7 +7,7 @@ except ImportError:
 
 def index(req, receiptNo):	
     receiptNo = cgi.escape(receiptNo)
-    rets = x.execqry("select * from  ('" + receiptNo + "');", False)
+    rets = x.execqry("select * from getReceipt('" + receiptNo + "');", False)
     result = []
     for ret in rets:
         stringed = map(str, ret)
