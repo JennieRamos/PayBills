@@ -2,22 +2,15 @@
 var siteloc = "http://localhost/Paybills";
 var scriptloc = "/scripts/";
 
-function fetchemail(receiptNo)
+function fetchemail(accountNo)
 {
    $.ajax({
       url: siteloc + scriptloc + "sendemail.py",
-      data: { receiptNo:receiptNo},
+      data: { accountNo:accountNo},
    
       dataType: 'json',
       success: function (res) {
-				console.log("Ok");
-				if(res[0][0] != "None")
-				{
-				     $('p').append("OK");
-				    
-				}
-				else 
-				   $('p').append("KO");
+				console.log(res);
 		} 
     }); 
 }
@@ -34,23 +27,23 @@ function setreceipt(accountno)
 		function (res){
 		    console.log(res);
 		    $('p').append(res);
-				
+		    console.log("OK");
 		}
    }); 
 }
 
-function printreceipt(receiptNo)
+function printreceipt(accountNo)
 {
    $.ajax({
       url: siteloc + scriptloc + "printreceipt.py",
-		data: {receiptNo:receiptNo
+		data: {accountNo:accountNo
 		},
 		dataType: 'json',
 		success:
 		function (res){
 				console.log(res);
 				$('p').append(res);
-				fetchemail(receiptNo);
+				fetchemail(accountNo);
 		}
    }); 
 }

@@ -6,3 +6,4 @@ class ArithTest(unittest.TestCase):
         self.failUnless(index(), "Another Error")
         self.failIfEqual(index(), "None")
         self.failUnlessEqual(index(), "Error again")		
+        
