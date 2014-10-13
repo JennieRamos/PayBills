@@ -6,21 +6,28 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/custom.css"> 
-	<script src="http://localhost/PayBills/javascript/jquery-1.10.2.min.js"></script>
-	<script src="http://localhost/PayBills/javascript/bootstrap.min.js"></script>
+	<script src="http://localhost/paybills/javascript/jquery-1.10.2.min.js"></script>
+	<script src="http://localhost/paybills/javascript/bootstrap.min.js"></script>
 	<script src="javascript/globs.js"></script>
 	<script src="javascript/jquery.js"></script>
-	<script src="javascript/paybill.js"></script>
-	<script src="javascript/jquery.js"></script>
-	<script src="javascript/jqinit.js"></script>
+	<script src="javascript/jquery.cookie.js"></script>
+	<script>
+    $("#username").append($.cookie("username")); 
+    </script>
+<script src="javascript/jquery.js"></script>
+ 
 </head>
 <body>
+
+
+
 	<script>
 	  $(function(){
 	    $("#header").load("header.html"); 
 	 
 	  }); 	 	
 	</script>
+	
 <div class="bs">
     <nav role="navigation" class="navbar navbar-default">
         
@@ -39,8 +46,8 @@
             <ul class="nav navbar-nav"> <!--The <ul> tag defines an unordered (bulleted) list.-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-			
-					<li><a href="#" onclick = "redirect(1);">Authority</a> </li>
+					<li><a href="#" style="margin-right:20px; "  class="dropdown-toggle" data-toggle="dropdown"  id="username"></a> </li>
+					
       			 	<li><a href="#" onclick="logout()">Log Out</a> </li>
             </ul>
         </div>
@@ -65,14 +72,15 @@
 				<p id="status" align="center"></p></p>
 				
 				<form class="payment">
-                <input type="text" id="pldtaccountnumber" placeholder="PLDT ACCOUNT NO." >
+                <input type="text" id="accountnumber" placeholder="PLDT ACCOUNT NO." >
 				<br>
 				<br>
-                <input   id="amount" placeholder="AMOUNT TO BE PAID" >
+                <input   id="amount" placeholder="AMOUNT BE PAID" >
 				<br>
 				<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a style="margin-left:-100px;"id="btn-payment" href="#" onclick=printreceipt(receiptNo); class="btn btn-success btn-sm" value="Pay Now"
+				<a style="margin-left:-100px;"id="btn-payment" href="#" class="btn btn-success btn-sm" value="Pay Now"
+					onclick=" ">
 					<center>PAY NOW </center>
 				</a>
 				<br>
