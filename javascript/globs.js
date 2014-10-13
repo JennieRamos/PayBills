@@ -26,24 +26,22 @@ function setreceipt(accountno)
 		success:
 		function (res){
 		    console.log(res);
-		    $('p').append(res);
-		    console.log("OK");
+		   	
 		}
    }); 
 }
 
-function printreceipt(accountNo)
+function printreceipt(receipt_id)
 {
    $.ajax({
       url: siteloc + scriptloc + "printreceipt.py",
-		data: {accountNo:accountNo
+		data: {receipt_id:receipt_id
 		},
 		dataType: 'json',
 		success:
 		function (res){
 				console.log(res);
-				$('p').append(res);
-				fetchemail(accountNo);
+				fetchemail($.cookie('accountnumber'));
 		}
    }); 
 }
