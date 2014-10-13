@@ -5,9 +5,10 @@ try:
 except ImportError:
     import simplejson as json
 
-def index(req, receiptNo):	
+def index(req, receiptNo, date):	
     receiptNo = cgi.escape(receiptNo)
-    rets = x.execqry("select * from getReceiptNo('" + receiptNo + "');", False)
+    date = cgi.escape(date)	
+    rets = x.execqry("select * from setReceipt('" + receiptNo + "','" + date + "');", True)
     result = []
     for ret in rets:
         stringed = map(str, ret)

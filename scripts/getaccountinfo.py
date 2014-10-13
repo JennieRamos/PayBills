@@ -5,13 +5,39 @@ try:
 except ImportError:
     import simplejson as json
 
-def index(req, receiptNo):	
-    receiptNo = cgi.escape(receiptNo)
-    rets = x.execqry("select * from getReceiptNo('" + receiptNo + "');", False)
+def index(req,accountno):
+    accountno = cgi.escape(accountno)
+    
+    x = doSql()
+    rets = x.execqry("select * from accountinfo("+accountno+");",False)
     result = []
     for ret in rets:
         stringed = map(str, ret)
         result.append(stringed)
 
     return json.dumps(result)
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
