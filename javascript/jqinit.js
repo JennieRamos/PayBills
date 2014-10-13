@@ -1,0 +1,8 @@
+$(function() 
+{
+  $("btn-payment").click(
+
+
+  );
+
+}); 

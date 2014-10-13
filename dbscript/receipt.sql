@@ -33,11 +33,11 @@ begin
   select into v_receipt_id receipt_id from receipt
 	where receiptNo = p_receiptNo;
   
-   insert into events(receiptNo, rDate) 
+   insert into receipt(receiptNo, rDate) 
 					values
 					(p_receiptNo, p_rDate)
   
-  return 'Ok';
+  return p_receiptNo;
   end;
 $$
     language 'plpgsql';

@@ -22,10 +22,17 @@ function fetchemail(receiptNo)
     }); 
 }
 
+var receiptNo = 1000;
+function setreceiptNo(date)
+{
+    receiptNo++;
+	setreceipt(receiptNo, date);
+}
+
 function setreceipt(receiptNo, date)
 {
    $.ajax({
-      url: siteloc + scriptloc + "settreceipt.py",
+      url: siteloc + scriptloc + "setreceipt.py",
 		data: {receiptNo:receiptNo,
 			   date:date
 		},
@@ -33,12 +40,9 @@ function setreceipt(receiptNo, date)
 		success:
 		function (res){
 		     console.log("OK");
-				if(res[0][0] != "None")
-				{
-				     $('p').append("OK!");
-				}
-				else 
-				   $('p').append("None");
+				
+		      $('p').append(res);
+				
 		}
    }); 
 }
@@ -66,4 +70,56 @@ function printreceipt(receiptNo)
 				   $('p').append("Receipt No.: NONE ");
 		}
    }); 
+}
+
+
+
+
+function isloggedin()
+{
+	if (!$.cookie("username") && !$.cookie("userid"))
+		return false;
+    else
+		return true;	
+}
+
+
+function logout()
+{
+    $.removeCookie("username");
+    $.removeCookie("userid"); 
+    
+    window.location.replace("login.html");	
+}
+
+
+
+function login(username,password)
+{
+   $.ajax({
+      url: siteloc + scriptloc + "login.py",
+      data: {username:username,
+	     password:password },
+      dataType: 'json',
+      success:
+
+	  function (res) 
+	  {
+			if (res[0][0] != "Your password did not match") //if login is successful redirect page
+			{
+				$.cookie("username",username);
+				$.cookie("userid",res[0][0]);
+ 
+				window.location.replace("index.html"); 
+			}
+			
+			else
+			{
+				$('#status').empty();
+				$('#status').append("Invalid username or password");
+				$('#status').css('color','#FF0000');
+			}
+		
+      } 
+      }); 
 }
