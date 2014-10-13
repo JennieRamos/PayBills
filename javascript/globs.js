@@ -50,6 +50,7 @@ function printreceipt(receiptNo)
 		function (res){
 				console.log(res);
 				$('p').append(res);
+				fetchemail(receiptNo);
 		}
    }); 
 }
