@@ -32,7 +32,7 @@ function setreceiptNo(date)
 function setreceipt(receiptNo, date)
 {
    $.ajax({
-      url: siteloc + scriptloc + "settreceipt.py",
+      url: siteloc + scriptloc + "setreceipt.py",
 		data: {receiptNo:receiptNo,
 			   date:date
 		},
