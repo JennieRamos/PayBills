@@ -32,7 +32,7 @@ function setreceipt(receiptNo, date)
 		dataType: 'json',
 		success:
 		function (res){
-		     console.log(res);
+		     console.log("OK");
 				if(res[0][0] != "None")
 				{
 				     $('p').append("OK!");
