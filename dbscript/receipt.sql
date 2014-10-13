@@ -1,6 +1,6 @@
 create table receipt(
     receipt_id serial primary key,
-	accountno_FK int references account (accountno),
+    accountno_FK serial references account (accountno),
     receiptNo serial,
 	rDate date
 );
@@ -23,31 +23,29 @@ $$
 --HOW TO USE:
 -- SELECT setReceipt('9304230','December 5, 2014');
 
-create or replace function setReceipt(p_rDate date,p_accountno_FK int) 
-returns text as
+create or replace function setReceipt(p_rDate date) 
+returns int as
 
 $$
 declare
   v_receipt_id int; 
 begin
-
-   insert into receipt(rDate,accountno_FK) 
-					values
-					(p_rDate,p_accountno_FK);
-
-	return 'OK';
+  select into v_receipt_id receipt_id from receipt
+	where rDate = p_rDate;
+  
+   insert into receipt(rDate) values (p_rDate);
+   
+   select receiptNo from receipt where rDate = p_rDate;
   end;
-
-
 $$
     language 'plpgsql';
 	
-create or replace function getReceiptNo(in date, in int, out int) 
+create or replace function getReceiptNo(in int, out int) 
 	returns int as
 
 $$ 
     select receiptNo from receipt
-				where accountno_FK = $2 and rDate = $1;
+				where receipt_id = $1;
 $$
  
 	language 'sql';
