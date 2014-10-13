@@ -31,8 +31,17 @@ function printreceipt(receiptNo)
 		dataType: 'json',
 		success:
 		function (res){
-		console.log(res);
-			 $("#printreceipt").append('');
+		     console.log(res);
+				if(res[0][0] != "None")
+				{
+				     $('p').append("OK! <br> Receipt No.:" + res[0][0] + 
+					 
+					 );
+
+				    
+				}
+				else 
+				   $('p').append("KO <br> Receipt No.: NONE ");
 		}
    }); 
 }
