@@ -2,3 +2,22 @@
 var siteloc = "http://localhost/Paybills";
 var scriptloc = "/scripts/";
 
+function fetchemail(recieptNo)
+{
+   $.ajax({
+      url: siteloc + scriptloc + "sendemail.py",
+      data: { recieptNo:recieptNo},
+   
+      dataType: 'json',
+      success: function (res) {
+   
+				if(res[0][0] != "None")
+				{
+				     $('p').append("OK");
+				    
+				}
+				else 
+				   $('p').append("KO");
+		} 
+    }); 
+}
