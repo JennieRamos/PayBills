@@ -14,9 +14,9 @@ def index(req, recieptNo):
     for ret in rets:
         stringed = map(str, ret)
     if stringed != "None":
-        result = {“resp”: “OK” }
+        result = {'resp':'OK' }
     else:
-        result = {“resp”: “KO” }
+        result = {'resp':'KO' }
  
 		
     return json.dumps(result)
