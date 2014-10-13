@@ -22,6 +22,29 @@ function fetchemail(receiptNo)
     }); 
 }
 
+function setreceipt(receiptNo, date)
+{
+   $.ajax({
+      url: siteloc + scriptloc + "settreceipt.py",
+		data: {receiptNo:receiptNo,
+			   date:date
+		},
+		dataType: 'json',
+		success:
+		function (res){
+		     console.log(res);
+				if(res[0][0] != "None")
+				{
+				     $('p').append("OK!");
+
+				    
+				}
+				else 
+				   $('p').append("None");
+		}
+   }); 
+}
+
 function printreceipt(receiptNo)
 {
    $.ajax({
