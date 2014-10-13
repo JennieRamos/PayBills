@@ -10,7 +10,7 @@ function fetchemail(accountNo)
    
       dataType: 'json',
       success: function (res) {
-				console.log("Ok");
+				console.log(res);
 		} 
     }); 
 }
