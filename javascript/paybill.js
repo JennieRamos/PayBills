@@ -10,24 +10,32 @@ function paybill(accountno,pldtacct,amount)
              },
       dataType: 'json',
       success: function (res) {
-      		console.log(res);
+        console.log(res);
+      		if (res["resp"] == "OK")
+      		{
+      			printreceipt(res["receiptNo"]);
+      		}
+          else if (res["resp"] == "Insufficient Funds")
+            alert("Insufficient Funds!!");
+          else
+            alert("Something went horribly wrong. Try again later.");
       }
     });
 }
 function fetchaccountinfo(accountno)
 {
-	var balance;
+
 	$.ajax({
-      url: siteloc + scriptloc + "paybill.py",
+      url: siteloc + scriptloc + "getaccountinfo.py",
       data: {accountno:accountno
              },
       async:false,
       dataType: 'json',
       success: function (res) {
-      		balance = res[0][1];
+      		console.log(res);
+          $("#emailconfirmation").append("<i>"+res[0][2]+"</i>");
       }
     });
 
-    return balance;
 }
  
