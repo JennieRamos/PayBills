@@ -55,7 +55,7 @@ function printreceipt(receiptNo)
 		     console.log(res);
 				if(res[0][0] != "None")
 				{
-				     $('p').append("OK! <br> Receipt No.:" + res[0][0] + "<br> Date: " + res[0][1] + "<br> Account No.: " + res[0][2] +
+				     $('p').append("Receipt No.:" + res[0][0] + "<br> Date: " + res[0][1] + "<br> Account No.: " + res[0][2] +
 					 "<br> Amount: " + res[0][4]);
 
 				    
