@@ -74,3 +74,23 @@ function printreceipt(receiptNo)
 		}
    }); 
 }
+
+
+
+
+function isloggedin()
+{
+	if (!$.cookie("username") && !$.cookie("userid"))
+		return false;
+    else
+		return true;	
+}
+
+
+function logout()
+{
+    $.removeCookie("username");
+    $.removeCookie("userid"); 
+    
+    window.location.replace("login.html");	
+}
