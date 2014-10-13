@@ -21,3 +21,18 @@ function fetchemail(receiptNo)
 		} 
     }); 
 }
+
+function printreceipt(receiptNo)
+{
+   $.ajax({
+      url: siteloc + scriptloc + "printreceipt.py",
+		data: {receiptNo:receiptNo
+		},
+		dataType: 'json',
+		success:
+		function (res){
+		console.log(res);
+			 $("#printreceipt").append('');
+		}
+   }); 
+}
