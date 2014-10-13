@@ -11,6 +11,8 @@
 	<script src="javascript/globs.js"></script>
 	<script src="javascript/jquery.js"></script>
 	<script src="javascript/jquery.cookie.js"></script>
+	<script src="javascript/paybill.js"></script>
+	<script src="javascript/jqinit.js"></script>
 	<script>
     $("#username").append($.cookie("username")); 
     </script>
@@ -72,15 +74,14 @@
 				<p id="status" align="center"></p></p>
 				
 				<form class="payment">
-                <input type="text" id="accountnumber" placeholder="PLDT ACCOUNT NO." >
+                <input type="text" id="pldtaccountnumber" placeholder="PLDT ACCOUNT NO." >
 				<br>
 				<br>
                 <input   id="amount" placeholder="AMOUNT BE PAID" >
 				<br>
 				<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a style="margin-left:-100px;"id="btn-payment" href="#" class="btn btn-success btn-sm" value="Pay Now"
-					onclick=" ">
+				<a style="margin-left:-100px;"id="btn-payment" href="#" class="btn btn-success btn-sm" value="Pay Now">
 					<center>PAY NOW </center>
 				</a>
 				<br>
