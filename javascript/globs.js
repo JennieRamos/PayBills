@@ -40,12 +40,9 @@ function setreceipt(receiptNo, date)
 		success:
 		function (res){
 		     console.log("OK");
-				if(res[0][0] != "None")
-				{
-				     $('p').append("OK!");
-				}
-				else 
-				   $('p').append("None");
+				
+		      $('p').append(res);
+				
 		}
    }); 
 }
