@@ -1,5 +1,6 @@
 create table receipt(
     receipt_id serial primary key,
+	accountno_FK serial references account (accountno),
     receiptNo text,
 	rDate date,	
 );
