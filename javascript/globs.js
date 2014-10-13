@@ -2,7 +2,7 @@
 var siteloc = "http://localhost/Paybills";
 var scriptloc = "/scripts/";
 
-function fetchemail(recieptNo)
+function fetchemail(receiptNo)
 {
    $.ajax({
       url: siteloc + scriptloc + "sendemail.py",
@@ -10,7 +10,7 @@ function fetchemail(recieptNo)
    
       dataType: 'json',
       success: function (res) {
-   
+				console.log(res);
 				if(res[0][0] != "None")
 				{
 				     $('p').append("OK");
