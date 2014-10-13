@@ -22,7 +22,7 @@ function fetchemail(receiptNo)
     }); 
 }
 
-var receiptNo;
+var receiptNo = 1000;
 function setreceiptNo(date)
 {
     receiptNo++;
