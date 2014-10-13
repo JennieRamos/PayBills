@@ -9,7 +9,7 @@ create table receipt(
 --HOW TO USE:
 -- SELECT getReceipt(1);
 
-create or replace function getReceipt(in int, out text, out date) 
+create or replace function getReceipt(in int, out int, out date) 
 	returns setof record as
 
 $$ 
