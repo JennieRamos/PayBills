@@ -9,12 +9,12 @@ import unittest
 
 class ArithTest(unittest.TestCase):
     def runTest(self):
-        self.failIf(index(1), "Error")
-        self.failUnless(index('December 5, 2014'), "Another Error")
-        self.failIfEqual(index(1), "None")
-        self.failUnlessEqual(index('pea','12345'), "Error again")  
-        self.failIf(index(2,3,60), "Invalid")
-        self.failIf(index(1), "Uncorrect")  
+        self.failIf(index(1) == {"resp": "KO"}, "Error")
+        self.failUnless(index('December 5, 2014') == {"receiptNo": "NONE", "resp": "KO"}, "Another Error")
+        self.failIfEqual(index(1) == [["None"]], "None")
+        self.failUnlessEqual(index('pea','12345') == [["1"]], "Error again")  
+        self.failIf(index(2,3,60) == {"receiptNo": "NONE", "resp": "Something went wrong"}, "Invalid")
+        self.failIf(index(1) == "ok", "Uncorrect")  
 
 def suite():
     suite_=unittest.TestSuite()
