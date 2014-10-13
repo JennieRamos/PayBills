@@ -22,18 +22,18 @@ function fetchemail(receiptNo)
     }); 
 }
 
-function setreceipt(date)
+function setreceipt(accountno)
 {
    $.ajax({
       url: siteloc + scriptloc + "setreceipt.py",
-		data: {date:date
+		data: {
+			accountno:accountno
 		},
 		dataType: 'json',
 		success:
 		function (res){
-		     console.log("OK");
-				
-		      $('p').append(res);
+		    console.log(res);
+		    $('p').append(res);
 				
 		}
    }); 
