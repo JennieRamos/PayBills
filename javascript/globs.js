@@ -56,18 +56,8 @@ function printreceipt(receiptNo)
 		dataType: 'json',
 		success:
 		function (res){
-
-				if(res[0][0] != "None")
-				{
-					 console.log("OK");
-				     $('p').append("Receipt No.:" + res[0][0] + "<br> Date: " + res[0][1] + "<br> Account No.: " + res[0][2] +
-					 "<br> Amount: " + res[0][4]);
-
-				    
-				}
-				else 
-				   console.log("KO");
-				   $('p').append("Receipt No.: NONE ");
+				console.log(res);
+				$('p').append(res);
 		}
    }); 
 }
