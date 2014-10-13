@@ -6,7 +6,7 @@ function fetchemail(receiptNo)
 {
    $.ajax({
       url: siteloc + scriptloc + "sendemail.py",
-      data: { recieptNo:recieptNo},
+      data: { receiptNo:receiptNo},
    
       dataType: 'json',
       success: function (res) {
