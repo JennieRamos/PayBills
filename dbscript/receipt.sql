@@ -37,7 +37,7 @@ begin
 					values
 					(p_rDate)
    
-   select receiptNo from receipt 
+   select receiptNo from receipt where rDate = p_rDate
   end;
 $$
     language 'plpgsql';
