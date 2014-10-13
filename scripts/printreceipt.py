@@ -16,7 +16,7 @@ def index(req, receipt_id):
         result.append(stringed)
 
     if (rets[0][0] != "None"):
-        results = {'resp':'OK','receiptNo': result[0][0], 'Date' : result[0][2], 'Account No.': result[0][1],'Amount':result[0][3]}
+        results = {'resp':'OK','receiptNo': result[0][0], 'date' : result[0][2], 'acctno': result[0][1],'amount':result[0][3]}
     else:
         results = {'resp':'KO','receiptNo':'NONE'}
 
