@@ -10,15 +10,16 @@ def index(req,accountno,pldtacct,amount):
     pldtacct = cgi.escape(pldtacct)
     amount = cgi.escape(amount)
     x = doSql()
-    rets = x.execqry("select * from paybill("+accountno+","+pldtacct+","+amount+");",True)
-    result = []
-    for ret in rets:
-        stringed = map(str, ret)
-        result.append(stringed)
 
-    return json.dumps(result)
+    balance = x.execqry("select * from accountinfo("+accountno+");",False)
+    balance = balance[0][1]
 
-
+    if int(balance) < int(amount):
+        rets = {'resp':'Insufficient Funds','receiptNo':'NONE'}
+    else:
+        rets = x.execqry("select * from paybill("+accountno+","+pldtacct+","+amount+");",True)
+        rets = {'resp':'OK','receiptNo':'1234'}
+    return json.dumps(rets)
 
 
 
