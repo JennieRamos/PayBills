@@ -6,8 +6,9 @@ except ImportError:
     import simplejson as json
 
 
-def index(req, accountNo):
+def index(req, accountNo,receiptNo):
     accountNo = cgi.escape(accountNo)
+    receiptNo = cgi.escape(receiptNo)
     x = doSql() 
     rets = x.execqry("select receiptNo from receipt INNER JOIN account\
     on receipt.accountno_FK = account.accountno where accountno = '" + accountNo + "';", False)
