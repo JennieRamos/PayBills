@@ -11,7 +11,8 @@ def index(req, receiptNo):
     result = []
     for ret in rets:
         stringed = map(str, ret)
-        result.append(stringed)
-
+    if stringed != "None":
+        result = {'resp':'OK','receiptNo':'1234', 'Date' : '10/13/14', 'Account No.': '001-002'}
+    else:
+        result = {'resp':'KO','receiptNo':'NONE'}
     return json.dumps(result)
-	
