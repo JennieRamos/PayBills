@@ -9,7 +9,7 @@ except ImportError:
 def index(req, recieptNo):
     recieptNo = cgi.escape(recieptNo)
     x = doSql() 
-    rets = x.execqry("select  get_('" + recieptNo + "');",False)
+    rets = x.execqry("select getReceiptNo('" + recieptNo + "');",False)
     result = []
     for ret in rets:
         stringed = map(str, ret)
