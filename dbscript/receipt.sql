@@ -41,5 +41,15 @@ begin
   end;
 $$
     language 'plpgsql';
+	
+create or replace function getReceiptNo(in text, out text) 
+	returns text as
+
+$$ 
+    select receiptNo from receipt
+				where receipt_id = $1;
+$$
+ 
+	language 'sql';
     
 	
