@@ -7,12 +7,13 @@ except ImportError:
 
 def index(req, receiptNo):	
     receiptNo = cgi.escape(receiptNo)
-    rets = x.execqry("select * from getReceiptNo('" + receiptNo + "');", False)
-    result = []
+    rets = x.execqry("select * from getReceipt('" + receiptNo + "');", False)
+    results = []
     for ret in rets:
         stringed = map(str, ret)
+        results.append(stringed)
     if stringed != "None":
-        result = {'resp':'OK','receiptNo':'1234', 'Date' : '10/13/14', 'Account No.': '001-002'}
+        result = {'resp':'OK','receiptNo': results[-1], 'Date' : results[0], 'Account No.': results[1]}
     else:
         result = {'resp':'KO','receiptNo':'NONE'}
     return json.dumps(result)
