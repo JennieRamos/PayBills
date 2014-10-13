@@ -56,18 +56,8 @@ function printreceipt(receiptNo)
 		dataType: 'json',
 		success:
 		function (res){
-
-				if(res[0][0] != "None")
-				{
-					 console.log("OK");
-				     $('p').append("Receipt No.:" + res[0][0] + "<br> Date: " + res[0][1] + "<br> Account No.: " + res[0][2] +
-					 "<br> Amount: " + res[0][4]);
-
-				    
-				}
-				else 
-				   console.log("KO");
-				   $('p').append("Receipt No.: NONE ");
+				console.log(res);
+				$('p').append(res);
 		}
    }); 
 }
@@ -90,4 +80,36 @@ function logout()
     $.removeCookie("userid"); 
     
     window.location.replace("login.html");	
+}
+
+
+
+function login(username,password)
+{
+   $.ajax({
+      url: siteloc + scriptloc + "login.py",
+      data: {username:username,
+	     password:password },
+      dataType: 'json',
+      success:
+
+	  function (res) 
+	  {
+			if (res[0][0] != "Your password did not match") //if login is successful redirect page
+			{
+				$.cookie("username",username);
+				$.cookie("userid",res[0][0]);
+ 
+				window.location.replace("index.html"); 
+			}
+			
+			else
+			{
+				$('#status').empty();
+				$('#status').append("Invalid username or password");
+				$('#status').css('color','#FF0000');
+			}
+		
+      } 
+      }); 
 }
