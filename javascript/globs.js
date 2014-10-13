@@ -10,7 +10,7 @@ function fetchemail(receiptNo)
    
       dataType: 'json',
       success: function (res) {
-				console.log(res);
+				console.log("Ok");
 				if(res[0][0] != "None")
 				{
 				     $('p').append("OK");
