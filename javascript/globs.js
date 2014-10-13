@@ -2,15 +2,19 @@
 var siteloc = "http://localhost/Paybills";
 var scriptloc = "/scripts/";
 
-function fetchemail(accountNo)
+function fetchemail(accountNo,receiptno)
 {
    $.ajax({
       url: siteloc + scriptloc + "sendemail.py",
-      data: { accountNo:accountNo},
+      data: { accountNo:accountNo,
+      	receiptNo:receiptno
+      },
    
       dataType: 'json',
       success: function (res) {
 				console.log(res);
+				$("#emailconfirmation").append("An email has been sent to ");
+				fetchaccountinfo(accountNo);
 		} 
     }); 
 }
@@ -41,7 +45,24 @@ function printreceipt(receipt_id)
 		success:
 		function (res){
 				console.log(res);
-				fetchemail($.cookie('accountnumber'));
+				if (res["resp"] == "OK")
+				{
+
+					$("#receiptno").empty();
+					$("#date").empty();
+					$("#amountmodal").empty();
+					$("#accountno").empty();
+
+					jQuery.noConflict();
+					$("#receiptmodal").modal();
+					$("#receiptno").append(res["receiptNo"]);
+					$("#date").append(res["date"]);
+					$("#amountmodal").append(res["amount"]);
+					$("#accountno").append(res["acctno"]);
+
+
+				}
+				fetchemail($.cookie('accountnumber'),receipt_id);
 		}
    }); 
 }
