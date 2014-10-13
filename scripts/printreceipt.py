@@ -5,30 +5,19 @@ try:
 except ImportError:
     import simplejson as json
 
-def index(req, accountNo):	
-    accountNo = cgi.escape(accountNo)
+def index(req, receipt_id):	
+    receipt_id = cgi.escape(receipt_id)
     x = doSql()
-    rets = x.execqry("select receiptNo from receipt INNER JOIN account\
-    on receipt.accountno_FK = account.accountno where accountno = '" + accountNo + "';", False)
-    for ret in rets:
-        stringed = ''.join(map(str, ret))
     
-    if stringed != 'None':
-        rets = x.execqry("select * from getReceipt('" + stringed + "');", False)
-        results = []
-        items = x.execqry("select accountno from account INNER JOIN receipt on receipt.accountno_FK = \
-        account.accountno where receiptNo = '" + stringed + "';", False)
-        for ret in rets:
-            stringed = map(str, ret)
-            results.append(stringed)
-        for item in items:
-            stringed = map(str, item)
-            results.append(stringed)
+    rets = x.execqry("select * from getReceiptNo("+receipt_id+")",False)
+    result = [];
+    for ret in rets:
+        stringed = map(str, ret)
+        result.append(stringed)
 
-        if stringed[-1] != "None":
-            result = {'resp':'OK','receiptNo': results[0][0], 'Date' : results[0][1], 'Account No.': results[1]}
-        else:
-            result = {'resp':'KO','receiptNo':'NONE'}
+    if (rets[0][0] != "None"):
+        results = {'resp':'OK','receiptNo': result[0][0], 'Date' : result[0][2], 'Account No.': result[0][1],'Amount':result[0][3]}
     else:
-	    result = {'resp':'KO','receiptNo':'NONE'}
-    return json.dumps(result)
+        results = {'resp':'KO','receiptNo':'NONE'}
+
+    return json.dumps(results)
