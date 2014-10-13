@@ -5,9 +5,12 @@ try:
 except ImportError:
     import simplejson as json
 
-def index(req, date):	
-    date = cgi.escape(date)	
-    rets = x.execqry("select * from setReceipt('" + date + "');", True)
+def index(req,accountno,amount):	
+    accountno = cgi.escape(accountno)
+    amount = cgi.escape(amount)
+
+    x = doSql()
+    rets = x.execqry("select * from setReceipt(current_date,"+accountno+","+amount+");", True)
     result = []
     for ret in rets:
         stringed = map(str, ret)
