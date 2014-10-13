@@ -6,10 +6,10 @@ except ImportError:
     import simplejson as json
 
 
-def index(req, recieptNo):
-    recieptNo = cgi.escape(recieptNo)
+def index(req, receiptNo):
+    receiptNo = cgi.escape(receiptNo)
     x = doSql() 
-    rets = x.execqry("select getReceiptNo('" + recieptNo + "');",False)
+    rets = x.execqry("select getReceiptNo('" + receiptNo + "');",False)
   
     for ret in rets:
         stringed = map(str, ret)
