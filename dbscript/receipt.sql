@@ -42,8 +42,8 @@ begin
 $$
     language 'plpgsql';
 	
-create or replace function getReceiptNo(in text, out text) 
-	returns text as
+create or replace function getReceiptNo(in int, out int) 
+	returns int as
 
 $$ 
     select receiptNo from receipt
