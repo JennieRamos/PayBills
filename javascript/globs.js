@@ -22,6 +22,13 @@ function fetchemail(receiptNo)
     }); 
 }
 
+var receiptNo;
+function setreceiptNo(date)
+{
+    receiptNo++;
+	setreceipt(receiptNo, date);
+}
+
 function setreceipt(receiptNo, date)
 {
    $.ajax({
